@@ -6,4 +6,5 @@ if [ "$USER" != "root" ]
 		echo "Permission denied!"
 		exit 1
 fi
+/bin/bash aptsources.sh
 /bin/bash sublime.sh

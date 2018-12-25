@@ -5,7 +5,7 @@ PACKAGE_CFG=`pwd`/sublime.package
 TERMINAL_CFG=`pwd`/sublime.terminal
 PREFERENCE=`pwd`/sublime.preferences
 
-echo "sublime_text installing..."
+echo "staring sublime_text installation..."
 
 pushd `pwd`
 
@@ -33,4 +33,4 @@ fi
 
 popd
 
-echo "sublime_text install done!"
+echo "sublime_text installation is complete!"
