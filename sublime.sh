@@ -1,12 +1,19 @@
 #!/bin/bash
 SUDO_USER=who | awk '{print $1}'
 LICENSE_FILE=`pwd`/sublime.license
-PACKAGE_LIST=`pwd`/sublime.package
-#wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | apt-key add -
-#apt install apt-transport-https
-#echo "deb https://download.sublimetext.com/ apt/stable/" | tee /etc/apt/sources.list.d/sublime-text.list
-#apt update && apt install sublime-text
+PACKAGE_CFG=`pwd`/sublime.package
+TERMINAL_CFG=`pwd`/sublime.terminal
+PREFERENCE=`pwd`/sublime.preferences
+
+echo "sublime_text installing..."
+
 pushd `pwd`
+
+wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | apt-key add -
+apt install apt-transport-https
+echo "deb https://download.sublimetext.com/ apt/stable/" | tee /etc/apt/sources.list.d/sublime-text.list
+apt update && apt install sublime-text
+
 cp $LICENSE_FILE /home/$SUDO_USER/.config/sublime-text-3/Local/License.sublime_license
 cp $LICENSE_FILE ~/.config/sublime-text-3/Local/License.sublime_license
 
@@ -14,6 +21,16 @@ cd /home/$SUDO_USER/.config/sublime-text-3/Installed\ Packages
 wget https://packagecontrol.io/Package%20Control.sublime-package
 
 cd /home/$SUDO_USER/.config/sublime-text-3/Packages/User
-wget https://github.com/rudolfb/ubuntu-elixir-elm-install-shell-script/raw/master/sublime-text-3/Package%20Control.sublime-settings
-wget https://github.com/rudolfb/ubuntu-elixir-elm-install-shell-script/raw/master/sublime-text-3/Terminal.sublime-settings
+cp $PACKAGE_CFG Package\ Control.sublime-settings
+cp $TERMINAL_CFG Terminal.sublime-settings
+cp $PREFERENCE Preferences.sublime-settings
+
+if [ -e "/usr/share/applications/sublime_text.desktop" ]
+	then
+		sed -i "s/gedit/sublime_text/g" /usr/share/applications/defaults.list
+		echo "application/x-shellscript=sublime_text.desktop" >> /usr/share/applications/defaults.list
+fi
+
 popd
+
+echo "sublime_text install done!"

@@ -1,6 +1,15 @@
 {
-    "installed_packages":
-    [
-        "Dracula Color Scheme"
-    ]
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Git",
+		"Gitignore",
+		"MarkdownEditing",
+		"Package Control",
+        	"Dracula Color Scheme",
+		"Terminal"
+	]
 }
