@@ -31,6 +31,10 @@ if [ -e "/usr/share/applications/sublime_text.desktop" ]
 		echo "application/x-shellscript=sublime_text.desktop" >> /usr/share/applications/defaults.list
 fi
 
+cd /home/$SUDO_USER/.tools
+git clone https://github.com/lyfeyaj/sublime-text-imfix.git
+cd sublime-text-imfix && ./sublime-imfix
+
 popd
 
 echo "sublime_text installation is complete!"
