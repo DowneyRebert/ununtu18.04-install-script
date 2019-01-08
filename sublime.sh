@@ -10,9 +10,9 @@ echo "staring sublime_text installation..."
 pushd `pwd`
 
 wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | apt-key add -
-apt install apt-transport-https
+apt install -y apt-transport-https
 echo "deb https://download.sublimetext.com/ apt/stable/" | tee /etc/apt/sources.list.d/sublime-text.list
-apt update && apt install sublime-text
+apt update && apt install -y sublime-text
 
 cp $LICENSE_FILE /home/$SUDO_USER/.config/sublime-text-3/Local/License.sublime_license
 cp $LICENSE_FILE ~/.config/sublime-text-3/Local/License.sublime_license

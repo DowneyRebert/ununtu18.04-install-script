@@ -4,9 +4,9 @@ TERMINATOR_CONFIG=`pwd`/terminator.config
 
 echo "staring common installation..."
 
-apt install gnome-tweaks gnome-tweak-tool gnome-icon-theme sxiv
-apt install git make gcc g++ vim terminator
-apt install lib32ncurses5 lib32z1 libc6-dbg:i386
+apt install -y gnome-tweaks gnome-tweak-tool gnome-icon-theme sxiv
+apt install -y git make gcc g++ vim terminator
+apt install -y lib32ncurses5 lib32z1 libc6-dbg:i386
 cp $TERMINATOR_CONFIG /home/$SUDO_USER/.config/terminator/config
 
 # if ps -o cmd= -p $(ps -o ppid= -p $$) | grep -q gnome; then
